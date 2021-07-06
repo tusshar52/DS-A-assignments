@@ -1,22 +1,18 @@
 /*
-Question - decompress.
-We are given a list nums of integers representing a list compressed with run-length encoding.
-Consider each adjacent pair of elements [freq, val] = [nums[2*i], nums[2*i+1]] (with i >= 0). 
-Return the decompressed list.
+Question - array partition
+Given an integer array nums of 2n integers, group these integers into n pairs (a1, b1), (a2, b2), ..., (an, bn) 
+such that the sum of min(ai, bi) for all i is maximized. Return the maximized sum.
 */
 
 class Solution {
 public:
-    vector<int> decompressRLElist(vector<int>& n)
-	{
-        vector<int> a;
-        for(int i = 0 ; i < n.size(); i += 2)
-		{
-            for(int j = 0 ;j < n[i]; j++)
-			{
-                a.push_back(n[i+1]);
-			}
+    int arrayPairSum(vector<int>& n) {
+        sort(n.begin(), n.end());
+        int sum=0, i=0;
+        for(i=1; i<n.size(); i+=2)
+        {
+            sum+=n[i-1];
         }
-        return a;
+        return sum;
     }
 };

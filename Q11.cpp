@@ -1,20 +1,20 @@
 /*
-Question - shuffle string.
-Given a string s and an integer array indices of the same length.
-The string s will be shuffled such that the character at the ith position moves to indices[i] in the shuffled string.
-Return the shuffled string.
+Question - Height check
+A school is trying to take an annual photo of all the students. The students are asked to stand in a single file line in non-decreasing order by height.
+Let this ordering be represented by the integer array expected where expected[i] is the expected height of the ith student in line.
 */
 
 class Solution {
 public:
-    string restoreString(string s, vector<int>& indices) 
-	{
-        string str = s;
-        int i = 0;
-        for(int x : indices)
-		{
-            str[x] = s[i++];
+    int heightChecker(vector<int>& heights) {
+        vector<int> exp=heights;
+        sort(exp.begin(), exp.end());
+        int c=0, i=0;
+        for(auto h:heights)
+        {
+            if(exp[i++]!=h)
+                c++;
         }
-        return str;
+        return c;
     }
 };
